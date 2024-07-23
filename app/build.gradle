@@ -5,11 +5,12 @@ plugins {
 }
 
 android {
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.example.cupcake"
-        minSdkVersion 19
-        targetSdkVersion 33
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -40,6 +41,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.example.cupcake'
 }
 
 dependencies {
@@ -47,21 +49,22 @@ dependencies {
     def lifecycle_version = "2.8.3"
     def ui_tooling_vers = "1.6.8"
 
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.core:core-ktx:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.core:core-ktx:1.13.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation "com.google.android.material:material:1.12.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.ui:ui-tooling:$ui_tooling_vers"
+    implementation "androidx.compose.ui:ui-tooling:$ui_tooling_vers"
     debugImplementation "androidx.compose.ui:ui-tooling:$ui_tooling_vers"
+    implementation "androidx.compose.ui:ui-tooling-preview:$ui_tooling_vers"
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
 }
