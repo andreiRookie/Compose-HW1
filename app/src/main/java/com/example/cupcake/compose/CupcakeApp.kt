@@ -1,6 +1,7 @@
 package com.example.cupcake.compose
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,12 +30,41 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
             }
         }
         composable(route = Routes.FlavorScreenRoute.name) {
-            FlavorScreen(navHostController = navHostController)
+            FlavorScreen(
+                flavors = listOf(
+                    context.getString(R.string.vanilla),
+                    context.getString(R.string.chocolate),
+                    context.getString(R.string.red_velvet),
+                    context.getString(R.string.salted_caramel),
+                    context.getString(R.string.coffee)
+                ),
+                chosenFlavor = sharedViewModel.flavor
+                    .observeAsState(initial = context.getString(R.string.vanilla)).value,
+
+                subTotal = sharedViewModel.price.observeAsState().value.orEmpty(),
+
+                onNavigateBackClick = {
+                    navHostController.popBackStack()
+                },
+                onRadioButtonClick = { flavor ->
+                    sharedViewModel.setFlavor(flavor)
+                },
+
+                onCancelButtonCLick = {
+                    sharedViewModel.resetOrder()
+                    navHostController.popBackStack()
+                },
+
+                onNextButtonClick = {
+                    navHostController.navigate(Routes.PickupScreenRoute.name)
+                }
+            )
         }
     }
 }
 
 enum class Routes(name: String) {
     StartScreenRoute("startScreen"),
-    FlavorScreenRoute("flavorScreen")
+    FlavorScreenRoute("flavorScreen"),
+    PickupScreenRoute("pickupScreen"),
 }
