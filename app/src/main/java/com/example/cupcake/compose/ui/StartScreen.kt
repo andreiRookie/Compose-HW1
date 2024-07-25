@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -36,6 +37,7 @@ import androidx.navigation.NavHostController
 import com.example.cupcake.R
 import com.example.cupcake.compose.elements.OrderButton
 import com.example.cupcake.model.OrderViewModel
+import java.util.Locale
 
 @Composable
 fun StartScreen(
@@ -46,7 +48,6 @@ fun StartScreen(
         modifier = Modifier
             .padding(16.dp)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
@@ -78,8 +79,13 @@ fun StartScreen(
                 )
         ) {
             Text(
-                text = stringResource(id = R.string.one_cupcake),
-                color = colorResource(id = R.color.white)
+                text = stringResource(id = R.string.one_cupcake).uppercase(),
+                color = colorResource(id = R.color.white),
+                fontSize = with(
+                    LocalDensity.current
+                ) {
+                    dimensionResource(id = R.dimen.order_button_font_size).toSp()
+                }
                 )
         }
 
@@ -95,8 +101,13 @@ fun StartScreen(
                 )
         ) {
             Text(
-                text = stringResource(id = R.string.six_cupcakes),
-                color = colorResource(id = R.color.white)
+                text = stringResource(id = R.string.six_cupcakes).uppercase(),
+                color = colorResource(id = R.color.white),
+                fontSize = with(
+                    LocalDensity.current
+                ) {
+                    dimensionResource(id = R.dimen.order_button_font_size).toSp()
+                }
             )
         }
 
@@ -112,8 +123,13 @@ fun StartScreen(
                 )
         ) {
             Text(
-                text = stringResource(id = R.string.twelve_cupcakes),
-                color = colorResource(id = R.color.white)
+                text = stringResource(id = R.string.twelve_cupcakes).uppercase(),
+                color = colorResource(id = R.color.white),
+                fontSize = with(
+                    LocalDensity.current
+                ) {
+                    dimensionResource(id = R.dimen.order_button_font_size).toSp()
+                }
             )
         }
     }
