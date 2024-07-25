@@ -21,4 +21,8 @@
     <dimen name="margin_between_elements">8dp</dimen>
     <dimen name="radio_button_padding">8dp</dimen>
     <dimen name="order_summary_margin">4dp</dimen>
+
+    <dimen name="screen_title_font_size">21sp</dimen>
+    <dimen name="screen_title_start_offset_56">-56dp</dimen>
+    <dimen name="screen_title_start_offset_16">-16dp</dimen>
 </resources>
