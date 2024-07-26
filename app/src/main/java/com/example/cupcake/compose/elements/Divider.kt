@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun Divider(
     modifier: Modifier = Modifier,
-    color: Color = Color.Black,
+    color: Color = Color.LightGray,
     thickness: Dp = 1.dp
 ) {
     Canvas(modifier = modifier.fillMaxWidth().padding(top = 16.dp)) {
