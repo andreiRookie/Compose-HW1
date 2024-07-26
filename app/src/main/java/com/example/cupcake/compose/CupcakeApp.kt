@@ -46,7 +46,7 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
                 onNavigateBackClick = {
                     navHostController.popBackStack()
                 },
-                onRadioButtonClick = { flavor ->
+                onOptionClick = { flavor ->
                     sharedViewModel.setFlavor(flavor)
                 },
 

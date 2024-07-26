@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.ButtonElevation
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,7 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.cupcake.R
 import com.example.cupcake.compose.elements.Divider
-import com.example.cupcake.compose.elements.FlavorRadioGroup
+import com.example.cupcake.compose.elements.CommonRadioGroup
 
 @Composable
 fun FlavorScreen(
@@ -31,7 +30,7 @@ fun FlavorScreen(
     chosenFlavor: String,
     subTotal: String,
     onNavigateBackClick: () -> Unit,
-    onRadioButtonClick: (flavor: String) -> Unit,
+    onOptionClick: (option: String) -> Unit,
     onCancelButtonCLick: () -> Unit,
     onNextButtonClick: () -> Unit
 ) {
@@ -47,11 +46,11 @@ fun FlavorScreen(
                 .fillMaxSize()
         ) {
 
-            FlavorRadioGroup(
-                flavors = flavors,
-                chosenFlavor = chosenFlavor
+            CommonRadioGroup(
+                options = flavors,
+                chosenOption = chosenFlavor
             ) { flavor ->
-                onRadioButtonClick(flavor)
+                onOptionClick(flavor)
             }
 
             Divider()
