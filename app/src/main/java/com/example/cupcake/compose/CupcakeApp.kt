@@ -77,7 +77,10 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
                 },
                 onCancelButtonCLick = {
                     sharedViewModel.resetOrder()
-                    navHostController.popBackStack()
+                    navHostController.popBackStack(
+                        route = Routes.StartScreenRoute.name,
+                        inclusive = false
+                    )
                 },
                 onNextButtonClick = {
                     navHostController.navigate(Routes.SummaryScreenRoute.name)
