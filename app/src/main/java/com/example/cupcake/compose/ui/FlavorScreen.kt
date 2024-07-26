@@ -1,5 +1,6 @@
 package com.example.cupcake.compose.ui
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,9 +10,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.ButtonElevation
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -77,6 +80,8 @@ fun FlavorScreen(
                     modifier = Modifier.weight(1f),
                     onClick = { onCancelButtonCLick() },
                     shape = RoundedCornerShape(4.dp),
+                    border = BorderStroke(width = 0.5.dp, color = Color.LightGray),
+                    elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
                     colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.white))
 
                 ) {
