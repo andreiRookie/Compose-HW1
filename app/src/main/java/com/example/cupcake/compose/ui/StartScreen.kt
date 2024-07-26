@@ -2,13 +2,9 @@ package com.example.cupcake.compose.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,13 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.example.cupcake.R
+import com.example.cupcake.compose.elements.CommonButton
 
 @Composable
 fun StartScreen(
@@ -53,71 +49,23 @@ fun StartScreen(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            Button(
-                onClick = { onOrderButtonClick(1) },
-                shape = RoundedCornerShape(4.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.pink_600)),
-                modifier = Modifier
-                    .padding(top = 8.dp)
-                    .defaultMinSize(
-                        dimensionResource(id = R.dimen.order_cupcake_button_width)
+            CommonButton(
+                modifier = Modifier.padding(top = 8.dp),
+                text = stringResource(id = R.string.one_cupcake),
+                onButtonClick = { onOrderButtonClick(1) }
+            )
 
-                    )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.one_cupcake).uppercase(),
-                    color = colorResource(id = R.color.white),
-                    fontSize = with(
-                        LocalDensity.current
-                    ) {
-                        dimensionResource(id = R.dimen.order_button_font_size).toSp()
-                    }
-                )
-            }
+            CommonButton(
+                modifier = Modifier.padding(top = 8.dp),
+                text = stringResource(id = R.string.six_cupcakes),
+                onButtonClick = { onOrderButtonClick(6) }
+            )
 
-            Button(
-                onClick = { onOrderButtonClick(6) },
-                shape = RoundedCornerShape(4.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.pink_600)),
-                modifier = Modifier
-                    .padding(top = 8.dp)
-                    .defaultMinSize(
-                        dimensionResource(id = R.dimen.order_cupcake_button_width)
-
-                    )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.six_cupcakes).uppercase(),
-                    color = colorResource(id = R.color.white),
-                    fontSize = with(
-                        LocalDensity.current
-                    ) {
-                        dimensionResource(id = R.dimen.order_button_font_size).toSp()
-                    }
-                )
-            }
-
-            Button(
-                onClick = { onOrderButtonClick(12) },
-                shape = RoundedCornerShape(4.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.pink_600)),
-                modifier = Modifier
-                    .padding(top = 8.dp)
-                    .defaultMinSize(
-                        dimensionResource(id = R.dimen.order_cupcake_button_width)
-
-                    )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.twelve_cupcakes).uppercase(),
-                    color = colorResource(id = R.color.white),
-                    fontSize = with(
-                        LocalDensity.current
-                    ) {
-                        dimensionResource(id = R.dimen.order_button_font_size).toSp()
-                    }
-                )
-            }
+            CommonButton(
+                modifier = Modifier.padding(top = 8.dp),
+                text = stringResource(id = R.string.twelve_cupcakes),
+                onButtonClick = { onOrderButtonClick(12) }
+            )
         }
     }
 }

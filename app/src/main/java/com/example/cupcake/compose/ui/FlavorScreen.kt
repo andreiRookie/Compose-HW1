@@ -21,8 +21,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.cupcake.R
-import com.example.cupcake.compose.elements.Divider
+import com.example.cupcake.compose.elements.CommonButton
 import com.example.cupcake.compose.elements.CommonRadioGroup
+import com.example.cupcake.compose.elements.Divider
 
 @Composable
 fun FlavorScreen(
@@ -90,28 +91,15 @@ fun FlavorScreen(
                         fontSize = with(
                             LocalDensity.current
                         ) {
-                            dimensionResource(id = R.dimen.order_button_font_size).toSp()
+                            dimensionResource(id = R.dimen.common_button_font_size).toSp()
                         }
                     )
                 }
 
-                Button(
-                    modifier = Modifier.weight(1f),
-                    onClick = { onNextButtonClick() },
-                    shape = RoundedCornerShape(4.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.pink_600))
-
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.next).uppercase(),
-                        color = colorResource(id = R.color.white),
-                        fontSize = with(
-                            LocalDensity.current
-                        ) {
-                            dimensionResource(id = R.dimen.order_button_font_size).toSp()
-                        }
-                    )
-                }
+                CommonButton(modifier = Modifier.weight(1f),
+                    onButtonClick = { onNextButtonClick() },
+                    text = stringResource(id = R.string.next)
+                )
             }
         }
     }

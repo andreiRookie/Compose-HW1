@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
 import com.example.cupcake.compose.ui.FlavorScreen
+import com.example.cupcake.compose.ui.PickupScreen
 import com.example.cupcake.compose.ui.StartScreen
 import com.example.cupcake.model.OrderViewModel
 
@@ -60,6 +61,29 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
                 }
             )
         }
+        composable(route = Routes.PickupScreenRoute.name) {
+            PickupScreen(
+                dates = sharedViewModel.dateOptions,
+                chosenDate = sharedViewModel.date
+                    .observeAsState(initial = sharedViewModel.dateOptions[0]).value,
+
+                subTotal = sharedViewModel.price.observeAsState().value.orEmpty(),
+
+                onNavigateBackClick = {
+                    navHostController.popBackStack()
+                },
+                onOptionClick = { date ->
+                    sharedViewModel.setDate(date)
+                },
+                onCancelButtonCLick = {
+                    sharedViewModel.resetOrder()
+                    navHostController.popBackStack()
+                },
+                onNextButtonClick = {
+                    navHostController.navigate(Routes.SummaryScreenRoute.name)
+                }
+            )
+        }
     }
 }
 
@@ -67,4 +91,5 @@ enum class Routes(name: String) {
     StartScreenRoute("startScreen"),
     FlavorScreenRoute("flavorScreen"),
     PickupScreenRoute("pickupScreen"),
+    SummaryScreenRoute("summaryScreen")
 }
