@@ -10,6 +10,7 @@ import com.example.cupcake.R
 import com.example.cupcake.compose.ui.FlavorScreen
 import com.example.cupcake.compose.ui.PickupScreen
 import com.example.cupcake.compose.ui.StartScreen
+import com.example.cupcake.compose.ui.SummaryScreen
 import com.example.cupcake.model.OrderViewModel
 
 @Composable
@@ -86,6 +87,9 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
                     navHostController.navigate(Routes.SummaryScreenRoute.name)
                 }
             )
+        }
+        composable(route = Routes.SummaryScreenRoute.name) {
+            SummaryScreen()
         }
     }
 }
