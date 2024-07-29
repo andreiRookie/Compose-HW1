@@ -108,25 +108,7 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
                 },
 
                 onSendOrderClick = {
-                    val orderSummary = context.getString(
-                        R.string.order_details,
-                        context.resources.getQuantityString(R.plurals.cupcakes, quantity, quantity),
-                        flavor,
-                        date,
-                        totalPrice
-                    )
-
-                    val intent = Intent(Intent.ACTION_SEND)
-                        .setType("text/plain")
-                        .putExtra(
-                            Intent.EXTRA_SUBJECT,
-                            context.getString(R.string.new_cupcake_order)
-                        )
-                        .putExtra(Intent.EXTRA_TEXT, orderSummary)
-
-                    if (context.packageManager?.resolveActivity(intent, 0) != null) {
-                        context.startActivity(intent)
-                    }
+                    sendOrder(context, quantity, flavor, date, totalPrice)
                 },
 
                 onCancelButtonCLick = {
@@ -138,6 +120,34 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
                 }
             )
         }
+    }
+}
+
+private fun sendOrder(
+    context: Context,
+    quantity: Int,
+    flavor:String,
+    date:String,
+    totalPrice: String
+) {
+    val orderSummary = context.getString(
+        R.string.order_details,
+        context.resources.getQuantityString(R.plurals.cupcakes, quantity, quantity),
+        flavor,
+        date,
+        totalPrice
+    )
+
+    val intent = Intent(Intent.ACTION_SEND)
+        .setType("text/plain")
+        .putExtra(
+            Intent.EXTRA_SUBJECT,
+            context.getString(R.string.new_cupcake_order)
+        )
+        .putExtra(Intent.EXTRA_TEXT, orderSummary)
+
+    if (context.packageManager?.resolveActivity(intent, 0) != null) {
+        context.startActivity(intent)
     }
 }
 
