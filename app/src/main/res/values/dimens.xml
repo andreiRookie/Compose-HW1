@@ -28,4 +28,6 @@
     <dimen name="common_button_font_size">14sp</dimen>
     <dimen name="radio_button_font_size">16sp</dimen>
     <dimen name="subtotal_font_size">18sp</dimen>
+    <dimen name="summary_element_label_font_size">16sp</dimen>
+    <dimen name="total_price_font_size">20sp</dimen>
 </resources>

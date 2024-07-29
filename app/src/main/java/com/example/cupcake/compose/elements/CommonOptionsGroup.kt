@@ -47,7 +47,7 @@ fun CommonOptionsGroup(
             onOptionClick(flavor)
         }
 
-        Divider()
+        Divider(modifier = Modifier.padding(top = 16.dp))
 
         Text(
             text = stringResource(id = R.string.subtotal_price, subTotal),

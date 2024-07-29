@@ -1,5 +1,7 @@
 package com.example.cupcake.compose
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.LocalContext
@@ -89,7 +91,52 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
             )
         }
         composable(route = Routes.SummaryScreenRoute.name) {
-            SummaryScreen()
+
+            val quantity = sharedViewModel.quantity.observeAsState(initial = 0).value
+            val flavor = sharedViewModel.flavor.observeAsState().value.orEmpty()
+            val date = sharedViewModel.date.observeAsState().value.orEmpty()
+            val totalPrice = sharedViewModel.price.observeAsState().value.orEmpty()
+
+            SummaryScreen(
+                quantity = quantity,
+                flavor = flavor,
+                date = date,
+                totalPrice = totalPrice,
+
+                onNavigateBackClick = {
+                    navHostController.popBackStack()
+                },
+
+                onSendOrderClick = {
+                    val orderSummary = context.getString(
+                        R.string.order_details,
+                        context.resources.getQuantityString(R.plurals.cupcakes, quantity, quantity),
+                        flavor,
+                        date,
+                        totalPrice
+                    )
+
+                    val intent = Intent(Intent.ACTION_SEND)
+                        .setType("text/plain")
+                        .putExtra(
+                            Intent.EXTRA_SUBJECT,
+                            context.getString(R.string.new_cupcake_order)
+                        )
+                        .putExtra(Intent.EXTRA_TEXT, orderSummary)
+
+                    if (context.packageManager?.resolveActivity(intent, 0) != null) {
+                        context.startActivity(intent)
+                    }
+                },
+
+                onCancelButtonCLick = {
+                    sharedViewModel.resetOrder()
+                    navHostController.popBackStack(
+                        route = Routes.StartScreenRoute.name,
+                        inclusive = false
+                    )
+                }
+            )
         }
     }
 }

@@ -2,7 +2,6 @@ package com.example.cupcake.compose.elements
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -17,7 +16,7 @@ fun Divider(
     color: Color = Color.LightGray,
     thickness: Dp = 1.dp
 ) {
-    Canvas(modifier = modifier.fillMaxWidth().padding(top = 16.dp)) {
+    Canvas(modifier = modifier.fillMaxWidth()) {
         drawLine(
             start = Offset(x = 0f, y = thickness.toPx()),
             end = Offset(x = size.width, y = thickness.toPx()),
