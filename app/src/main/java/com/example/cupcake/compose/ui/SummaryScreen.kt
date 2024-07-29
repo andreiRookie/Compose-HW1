@@ -28,7 +28,7 @@ import com.example.cupcake.compose.elements.SummaryElement
 
 @Composable
 fun SummaryScreen(
-    quantity: Int,
+    quantity: String,
     flavor: String,
     date: String,
     totalPrice: String,
@@ -49,7 +49,7 @@ fun SummaryScreen(
 
             SummaryElement(
                 label = stringResource(id = R.string.quantity),
-                value = quantity.toString()
+                value = quantity
             )
 
             Divider(Modifier.padding(

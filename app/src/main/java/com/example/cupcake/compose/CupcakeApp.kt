@@ -98,7 +98,7 @@ fun CupcakeApp(sharedViewModel: OrderViewModel) {
             val totalPrice = sharedViewModel.price.observeAsState().value.orEmpty()
 
             SummaryScreen(
-                quantity = quantity,
+                quantity = quantity.toString(),
                 flavor = flavor,
                 date = date,
                 totalPrice = totalPrice,
